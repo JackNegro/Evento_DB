@@ -1,0 +1,97 @@
+create table Empresa(
+noEmpresa serial not null,
+codEmpresa varchar[4] primary key not null,
+direccionPostal varchar[100] not null,
+nombre varchar[50] not null,
+telefono varchar[8],
+DirectorGeneral varchar [50],
+GerenteRecursos varchar [50],
+ResponsableContailidad varchar [50],
+SecretarioSindicato varchar [50]
+);
+
+create table Empleado(
+noEmpleado serial not null,
+idEmpleado varchar[4] primary key not null,
+codEmpresa varchar[4],
+nombre varchar[50],
+primerApellido varchar [50],
+segundoApelllido varchar [50],
+direccion varchar[150],
+telefono varchar [8],
+cargo varchar[50],
+departamento varchar[50],
+constraint codEmpresa foreign key(codEmpresa) references Empresa(codEmpresa) on delete cascade
+);
+
+create table Cliente(
+noCliente serial not null,
+idCliente varchar[4] primary key not null,
+nombre varchar[50],
+primerApellido varchar [50],
+segundoApelllido varchar [50],
+direccion varchar[150],
+telefono varchar [8],
+email varchar[100],
+tratoPreferencial boolean,
+EventosAnteriores varchar[4]
+);
+
+alter table Cliente add
+constraint EventosAnteriores foreign key(EventosAnteriores) references Evento(codEvento) on delete cascade;
+
+create table Evento(
+noEvento serial not null,
+codEvento varchar[4] primary key not null,
+nombre varchar[50],
+tipo varchar[50],
+fecha date,
+horaInicio time,
+horaFin time,
+ubicacion varchar[100],
+numInvitados int,
+concepto varchar[100],
+responsable varchar[4],
+idCliente varchar[4],
+constraint responsable foreign key(responsable) references Empleado(idEmpleado) on delete cascade,
+constraint idCliente foreign key(idCliente) references Cliente(idCliente) on delete cascade
+);
+
+create table Servicio(
+noServicio serial not null,
+codServicio varchar[4] primary key not null,
+nombre varchar[50],
+descripcion varchar[140],
+categoria varchar[50],
+precio float,
+tipoServicio varchar[100],
+idProveedor varchar[4]
+);
+alter table Servicio add
+constraint idProveedor foreign key(idProveedor) references Proveedor(idProveedor) on delete cascade;
+
+create table Proveedor(
+noProveedor serial not null,
+idProveedor varchar[4] primary key not null,
+nombre varchar[50],
+primerApellido varchar [50],
+segundoApelllido varchar [50],
+direccion varchar[150],
+telefono varchar [8],
+email varchar[100],
+codServicio varchar[4],
+constraint codServicio foreign key(codServicio) references Servicio(codServicio) on delete cascade
+);
+
+create table Contrato(
+noContrato serial not null,
+codEvento varchar[4],
+codServicio varchar[4],
+Pago float,
+cronogramaPago date,
+condiciones varchar[150],
+codEmpresa varchar[4],
+constraint codEvento foreign key(codEvento) references Evento(codEvento) on delete cascade,
+constraint codServicio foreign key(codServicio) references Servicio(codServicio) on delete cascade,
+constraint codEmpresa foreign key(codEmpresa) references Empresa(codEmpresa) on delete cascade
+);
