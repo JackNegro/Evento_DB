@@ -1,0 +1,68 @@
+package Logica;
+
+public class Servicio {
+    private String nombre;
+    private String descripcion;
+    private String categoria;
+    private float precio;
+    private String tipoServicio;
+    private Proveedor proveedor;
+
+    public Servicio(String nombre, String descripcion, String categoria,
+                    float precio, String tipoServicio, Proveedor proveedor) {
+        setNombre(nombre);
+        setDescripcion(descripcion);
+        setCategoria(categoria);
+        setPrecio(precio);
+        setTipoServicio(tipoServicio);
+        setProveedor(proveedor);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public String getTipoServicio() {
+        return tipoServicio;
+    }
+
+    public void setTipoServicio(String tipoServicio) {
+        this.tipoServicio = tipoServicio;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+}
