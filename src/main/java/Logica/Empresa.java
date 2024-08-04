@@ -1,24 +1,31 @@
 package Logica;
-import java.util.ArrayList;
 
 public class Empresa {
+    private String code;
     private String direccion;
     private String nombre;
     private String telefono;
-    private Empleado DirectprG;
-    private Empleado GerenteR;
-    private Empleado SecretarioS;
-    private ArrayList<Contrato> contratoes;
-    private ArrayList<Empleado> empleados;
+    private String DirectorG;
+    private String GerenteR;
+    private String  SecretarioS;
 
-    public Empresa(String direccion, String nombre, String telefono,
-                   Empleado directprG, Empleado gerenteR,
-                   Empleado secretarioS) {
+    public Empresa(String code, String direccion, String nombre, String telefono,
+                   String directorG,String gerenteR,String secretarioS) {
+        setCode(code);
         setDireccion(direccion);
         setNombre(nombre);
         setTelefono(telefono);
-        contratoes = new ArrayList<>();
-        empleados = new ArrayList<>();
+        setDirectorG(directorG);
+        setGerenteR(gerenteR);
+        setSecretarioS(secretarioS);
+    }
+
+    public String getCode(){
+        return this.code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDireccion() {
@@ -45,43 +52,30 @@ public class Empresa {
         this.telefono = telefono;
     }
 
-    public Empleado getDirectprG() {
-        return DirectprG;
+
+    ////////////////////////////////////////////////////////////////////////////////
+    public String getDirectorG() {
+        return DirectorG;
     }
 
-    public void setDirectprG(Empleado directprG) {
-        DirectprG = directprG;
+    public void setDirectorG(String directorG) {
+        DirectorG = directorG;
     }
 
-    public Empleado getGerenteR() {
+    public String getGerenteR() {
         return GerenteR;
     }
 
-    public void setGerenteR(Empleado gerenteR) {
+    public void setGerenteR(String gerenteR) {
         GerenteR = gerenteR;
     }
 
-    public Empleado getSecretarioS() {
+    public String getSecretarioS() {
         return SecretarioS;
     }
 
-    public void setSecretarioS(Empleado secretarioS) {
+    public void setSecretarioS(String secretarioS) {
         SecretarioS = secretarioS;
     }
 
-    public ArrayList<Contrato> getContratoes() {
-        return contratoes;
-    }
-
-    public void setContratoes(ArrayList<Contrato> contratoes) {
-        this.contratoes = contratoes;
-    }
-
-    public ArrayList<Empleado> getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(ArrayList<Empleado> empleados) {
-        this.empleados = empleados;
-    }
 }

@@ -1,21 +1,20 @@
 package Logica;
 
 public class Servicio {
+    private String code;
     private String nombre;
     private String descripcion;
     private String categoria;
     private float precio;
     private String tipoServicio;
-    private Proveedor proveedor;
 
     public Servicio(String nombre, String descripcion, String categoria,
-                    float precio, String tipoServicio, Proveedor proveedor) {
+                    float precio, String tipoServicio) {
         setNombre(nombre);
         setDescripcion(descripcion);
         setCategoria(categoria);
         setPrecio(precio);
         setTipoServicio(tipoServicio);
-        setProveedor(proveedor);
     }
 
     public String getNombre() {
@@ -58,11 +57,4 @@ public class Servicio {
         this.tipoServicio = tipoServicio;
     }
 
-    public Proveedor getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
-    }
 }
