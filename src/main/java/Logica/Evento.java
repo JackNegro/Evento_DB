@@ -12,11 +12,11 @@ public class Evento {
     private String ubicacion;
     private int numInvitados;
     private String conceptoDecoracion;
-    private Empleado responsable;
+    private String code_responsable;
 
     public Evento(String nombre, String tipo, String fecha, Time horaInicio,
                   Time horaFin, String ubicacion, int numInvitados,
-                  String conceptoDecoracion, Empleado responsable) {
+                  String conceptoDecoracion, String code_responsable) {
         setFecha(fecha);
         setNombre(nombre);
         setTipo(tipo);
@@ -24,7 +24,7 @@ public class Evento {
         setHoraFin(horaFin);
         setConceptoDecoracion(conceptoDecoracion);
         setNumInvitados(numInvitados);
-        setResponsable(responsable);
+        setResponsable(code_responsable);
         setUbicacion(ubicacion);
     }
 
@@ -92,11 +92,11 @@ public class Evento {
         this.conceptoDecoracion = conceptoDecoracion;
     }
 
-    public Empleado getResponsable() {
-        return responsable;
+    public String getResponsable() {
+        return code_responsable;
     }
 
-    public void setResponsable(Empleado responsable) {
-        this.responsable = responsable;
+    public void setResponsable(String code_responsable) {
+        this.code_responsable = code_responsable;
     }
 }

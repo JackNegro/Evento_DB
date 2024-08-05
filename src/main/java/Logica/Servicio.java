@@ -8,13 +8,22 @@ public class Servicio {
     private float precio;
     private String tipoServicio;
 
-    public Servicio(String nombre, String descripcion, String categoria,
+    public Servicio(String code, String nombre, String descripcion, String categoria,
                     float precio, String tipoServicio) {
+        setCode(code);
         setNombre(nombre);
         setDescripcion(descripcion);
         setCategoria(categoria);
         setPrecio(precio);
         setTipoServicio(tipoServicio);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getNombre() {

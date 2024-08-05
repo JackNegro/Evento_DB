@@ -6,9 +6,7 @@ public class BD_Connect {
     private String user;
     private String password;
 
-    public BD_Connect(String serverAddress,
-                           String database, String userName,
-                           String password){
+    public BD_Connect(String serverAddress, String database, String userName,String password){
         this.databaseURL = "jdbc:postgresql://"+serverAddress+":5432/"+database;
         this.user = userName;
         this.password = password;

@@ -3,35 +3,35 @@ package Logica;
 import java.util.Date;
 
 public class Contrato {
-    private Evento evento;
-    private Servicio servicio;
+    private String codeEvento;
+    private String codeServicio;
     private float precioNegociado;
     private Date cronogramaPago;
     private String condiciones;
 
-    public Contrato(Evento evento, Servicio servicio, float precioNegociado,
+    public Contrato(String  codeEvento, String codeServicio, float precioNegociado,
                     Date cronogramaPago, String condiciones) {
-        setEvento(evento);
-        setServicio(servicio);
+        setEvento(codeEvento);
+        setServicio(codeServicio);
         setPrecioNegociado(precioNegociado);
         setCondiciones(condiciones);
         setCronogramaPago(cronogramaPago);
     }
 
-    public Evento getEvento() {
-        return evento;
+    public String getEvento() {
+        return codeEvento;
     }
 
-    public void setEvento(Evento evento) {
-        this.evento = evento;
+    public void setEvento(String  codeEvento) {
+        this.codeEvento = codeEvento;
     }
 
-    public Servicio getServicio() {
-        return servicio;
+    public String getServicio() {
+        return codeServicio;
     }
 
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
+    public void setServicio(String  servicio) {
+        this.codeServicio = codeServicio;
     }
 
     public float getPrecioNegociado() {

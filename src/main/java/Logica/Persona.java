@@ -1,6 +1,7 @@
 package Logica;
 
 public class Persona {
+    private String code;
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
@@ -8,13 +9,21 @@ public class Persona {
     private String telefono;
     private String email;
 
-    public Persona(String nombre, String primerApellido, String segundoApellido, String direccion, String telefono, String email) {
+    public Persona(String code, String nombre, String primerApellido, String segundoApellido, String direccion, String telefono, String email) {
+        setCode(code);
         setDireccion(direccion);
         setEmail(email);
         setNombre(nombre);
         setPrimerApellido(primerApellido);
         setSegundoApellido(segundoApellido);
         setTelefono(telefono);
+    }
+    public String getCode(){
+        return code;
+    }
+
+    public void setCode(String code){
+        this.code = code;
     }
 
     public String getNombre() {

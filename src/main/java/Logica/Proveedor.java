@@ -1,21 +1,21 @@
 package Logica;
 
 public class Proveedor extends Persona{
-    Servicio servicio;
+    String codeServicio;
 
-    public Proveedor(String nombre, String primerApellido,
+    public Proveedor(String code, String nombre, String primerApellido,
                      String segundoApellido,
                      String direccion, String telefono,
-                     String email, Servicio servicio) {
-        super(nombre, primerApellido, segundoApellido, direccion, telefono, email);
-        setServicio(servicio);
+                     String email, String codeServicio) {
+        super(code,nombre, primerApellido, segundoApellido, direccion, telefono, email);
+        setServicio(codeServicio);
     }
 
-    public Servicio getServicio() {
-        return servicio;
+    public String getServicio() {
+        return codeServicio;
     }
 
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
+    public void setServicio(String  codeServicio) {
+        this.codeServicio = codeServicio;
     }
 }
