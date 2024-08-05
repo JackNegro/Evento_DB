@@ -1,0 +1,59 @@
+CREATE OR REPLACE FUNCTION public.empresa_insert(
+	codempresa character varying,
+	direccionpostal character varying,
+	nombre character varying,
+	telefono character varying,
+	directoreneral character varying,
+	gerenterecursos character varying,
+	responsablecontabilidad character varying,
+	secretariosindicato character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+BEGIN
+    INSERT INTO empresa (codempresa,direccionpostal,nombre,telefono,directorgeneral,gerenterecursos,responsablecontabilidad,secretariosindicato)
+    VALUES (codempresa,direccionpostal,nombre,telefono,directorgeneral,gerenterecursos,responsablecontabilidad,secretariosindicato);
+END;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.update_empresa(
+	code character varying,
+	direccionpostal character varying,
+	nombre character varying,
+	telefono character varying,
+	directoreneral character varying,
+	gerenterecursos character varying,
+	responsablecontabilidad character varying,
+	secretariosindicato character varying
+				)RETURN void
+	LANGUAGE 'plpgsql'
+	VOLATILE PARALLEL unsafe
+AS $BODY$
+begin
+	update empresa
+	SET direccionposal = $2,
+	nombre = $3,
+	telefono = $4,
+	directorgeneral = $5,
+	gerenterecursos = $6,
+	responsablecontabilidad = $7,
+	secretariosindicato = $8
+    WHERE codempresa = $1;	
+END;
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.delete_empresa(
+	code character varying
+		) RETURN void
+LANGUAGE 'plpgsql'
+COST 100
+VOLATILE PARALLEL UNSAFE
+AS 
+$$
+	BEGIN
+		DELETE FROM empresa
+		WHERE codempresa = code;
+END;
+$$;
+	

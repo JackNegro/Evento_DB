@@ -57,7 +57,7 @@ public class EmpresaBD {
         callStat.close();
     }
 
-    public ResultSet SelectEmpresaa()throws SQLException,ClassNotFoundException{
+    public ResultSet SelectEmpresa()throws SQLException,ClassNotFoundException{
         ResultSet result = null;
 
         Connection connection = BD_Locator.getConnection();

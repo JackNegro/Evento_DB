@@ -3,10 +3,11 @@ package Logica;
 import java.sql.*;
 
 public class Evento {
+    private String code;
     private String nombre;
     private String tipo;
     //revisar esto se puede usar toString() para las fechas/hora pero no estoy seguro
-    private String fecha;
+    private Date fecha;
     private Time horaInicio;
     private Time horaFin;
     private String ubicacion;
@@ -14,9 +15,10 @@ public class Evento {
     private String conceptoDecoracion;
     private String code_responsable;
 
-    public Evento(String nombre, String tipo, String fecha, Time horaInicio,
+    public Evento(String code, String nombre, String tipo, Date fecha, Time horaInicio,
                   Time horaFin, String ubicacion, int numInvitados,
                   String conceptoDecoracion, String code_responsable) {
+        setCode(code);
         setFecha(fecha);
         setNombre(nombre);
         setTipo(tipo);
@@ -26,6 +28,14 @@ public class Evento {
         setNumInvitados(numInvitados);
         setResponsable(code_responsable);
         setUbicacion(ubicacion);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getNombre() {
@@ -44,11 +54,11 @@ public class Evento {
         this.tipo = tipo;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
