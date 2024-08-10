@@ -4,11 +4,21 @@ public class User {
     private int code;
     private String username;
     private String password;
+    private int role;
 
-    public User(int code, String username, String password) {
+    public User(int code, String username, String password,int role) {
         setCode(code);
         setPassword(password);
         setUsername(username);
+        setRole(role);
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public void setCode(int code) {

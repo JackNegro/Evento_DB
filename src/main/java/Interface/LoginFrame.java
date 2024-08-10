@@ -2,6 +2,7 @@ package Interface;
 
 import BD_Connect.BD_Locator;
 import Logica.User;
+import Utils.Encription;
 import Utils.Validation;
 
 import javax.swing.*;
@@ -67,7 +68,7 @@ public class LoginFrame {
         userTxtF.addCaretListener(new CaretListener() {
             public void caretUpdate(CaretEvent caretEvent) {
                 String userAlias = LoginFrame.userTxtF.getText();
-                if (userAlias.length() >= 5 && Validation.userAliasValidation(userAlias)) {
+                if (userAlias.length() >= 4 && Validation.userAliasValidation(userAlias)) {
                     LoginFrame.validUser = true;
                     LoginFrame.userLbl.setForeground(Color.BLACK);
                     LoginFrame.acceptBton.setEnabled(LoginFrame.validUser && LoginFrame.validPassw);
@@ -110,35 +111,21 @@ public class LoginFrame {
                     LoginFrame.user = BD_Locator.getUserBD().getUserByCode(Integer.parseInt(LoginFrame.userTxtF.getText()));
                     if (LoginFrame.user == null) {
                         JOptionPane.showInternalMessageDialog((Component) null, "El usuario no existe. \nPor favor, rectifíquelo.", "Error", 0);
-                    } /*else {
+                    } else {
 
                         String passw = new String(LoginFrame.passwF.getPassword());
                         String encriptedPassW = Encription.getSha256(passw);
                         if (encriptedPassW.equals(LoginFrame.user.getPassword())) {
                             boolean f = true;
-                            ResultSet loans = BD_Locator.getLoanService().loanAll();
-                            ResultSetMetaData metadata = loans.getMetaData();
-
-                            while(loans.next()) {
-                                String ci = loans.getInt(5);
-                                if (LoginFrame.user.getCode() == ci) {
-                                    JOptionPane.showInternalMessageDialog((Component)null, "El usuario est� sancioando", "Error", 0);
-                                    LoginFrame.userTxtF.setText("");
-                                    LoginFrame.passwF.setText("");
-                                    f = false;
-                                    break;
-                                }
-                            }
-
                             if (f) {
-                                MainFrame.getMainFrame(LoginFrame.user);
+                                MainFrame.getMainFrame(LoginFrame.user.getCode());
                                 LoginFrame.dispose();
                             }
                         } else {
                             JOptionPane.showInternalMessageDialog((Component)null, "La contraseña es incorrecta.\n Por favor, rectifíquela.", "Error", 0);
                             LoginFrame.passwF.setText("");
                         }
-                    }*/
+                    }
                 } catch (SQLException | ClassNotFoundException var8) {
                     Exception exception = var8;
                     exception.printStackTrace();
