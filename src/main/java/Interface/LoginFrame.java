@@ -62,9 +62,9 @@ public class LoginFrame {
 
         acceptBton.setEnabled(validUser && validPassw);
         userTxtF.setAutoscrolls(false);
-        userTxtF.setToolTipText("El alias tiene que ser alfanumérico y tener entre 5 y 15 caracteres");
+        userTxtF.setToolTipText("El alias tiene que ser alfanumérico y tener entre 4 y 15 caracteres");
         passwF.setAutoscrolls(false);
-        passwF.setToolTipText("La contraseña tiene que tener al menos 5 caracteres");
+        passwF.setToolTipText("La contraseña tiene que tener al menos 4 caracteres");
         userTxtF.addCaretListener(new CaretListener() {
             public void caretUpdate(CaretEvent caretEvent) {
                 String userAlias = LoginFrame.userTxtF.getText();

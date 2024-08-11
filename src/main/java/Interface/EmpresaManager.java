@@ -216,20 +216,19 @@ public class EmpresaManager {
         this.addComponent(this.empresa_nameTxtF, 1, 1, 1, 1);
 
         this.addComponent(this.empresa_addressLbl,2 ,0 , 1, 1);
-        this.addComponent(this.empresa_addressTxtF, 2,2 , 1, 1);
+        this.addComponent(this.empresa_addressTxtF, 2,1 , 1, 1);
 
         this.addComponent(this.empresa_phoneLbl, 3, 0, 1, 1);
-        this.addComponent(this.empresa_phoneTxtF, 3, 3, 1, 1);
+        this.addComponent(this.empresa_phoneTxtF, 3, 1, 1, 1);
 
         this.addComponent(this.empresa_directorLbl, 4, 0, 1, 1);
-        this.addComponent(this.empresa_DirectorGTxtF, 4, 4, 1, 1);
+        this.addComponent(this.empresa_DirectorGTxtF, 4, 1, 1, 1);
 
         this.addComponent(this.empresa_gerenteLbl, 5, 0, 1, 1);
-        this.addComponent(this.empresa_GerenteTxtF, 5, 5, 1, 1);
+        this.addComponent(this.empresa_GerenteTxtF, 5, 1, 1, 1);
 
         this.addComponent(this.empresa_secretarioLbl, 6, 0, 1, 1);
-        this.addComponent(this.empresa_SecretarioSTxtF, 6, 6, 1, 1);
-
+        this.addComponent(this.empresa_SecretarioSTxtF, 6, 1, 1, 1);
 
     }
 
