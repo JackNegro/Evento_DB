@@ -46,7 +46,7 @@ public class UserBD {
         callStat.execute();
         results = (ResultSet)callStat.getObject(2);
         if (results.next()) {
-            user = new User (results.getInt(1), results.getString(2),results.getString(3),results.getInt(4) );
+            user = new User ( results.getString(2),results.getString(3),results.getInt(4) );
         }
 
         connection.close();

@@ -6,8 +6,7 @@ public class User {
     private String password;
     private int role;
 
-    public User(int code, String username, String password,int role) {
-        setCode(code);
+    public User(String username, String password,int role) {
         setPassword(password);
         setUsername(username);
         setRole(role);
