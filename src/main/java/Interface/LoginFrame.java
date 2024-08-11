@@ -1,5 +1,6 @@
 package Interface;
 
+import BD_Connect.BD_Connect;
 import BD_Connect.BD_Locator;
 import Logica.User;
 import Utils.Encription;
@@ -13,8 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class LoginFrame {
@@ -105,10 +105,13 @@ public class LoginFrame {
         });
         acceptBton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                LoginFrame.user = null;
+                MainFrame.getMainFrame(0);
+                LoginFrame.dispose();
 
+                /*
+                LoginFrame.user = null;
                 try {
-                    LoginFrame.user = BD_Locator.getUserBD().getUserByCode(Integer.parseInt(LoginFrame.userTxtF.getText()));
+                    LoginFrame.user = BD_Locator.getUserBD().getUserByUsername(LoginFrame.userTxtF.getText());
                     if (LoginFrame.user == null) {
                         JOptionPane.showInternalMessageDialog((Component) null, "El usuario no existe. \nPor favor, rectifíquelo.", "Error", 0);
                     } else {
@@ -134,9 +137,10 @@ public class LoginFrame {
                     Exception e = var9;
                     throw new RuntimeException(e);
                 }
-
+                */
             }
         });
+
         cancelBton.addActionListener(ActionLocator.getCloseAction());
         connectionMenu.add(changeConnectMItem);
         laMenuBar.add(connectionMenu);

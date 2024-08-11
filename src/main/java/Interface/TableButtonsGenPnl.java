@@ -1,5 +1,7 @@
 package Interface;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
@@ -62,7 +64,7 @@ public class TableButtonsGenPnl extends JPanel {
     private void setComponentsReady(Supplier<ResultSet> querySupl, JPanel topPnl, JButton[] buttons) throws SQLException {
         this.elTableModel = new ResultSetTableModel((ResultSet)querySupl.get());
         this.laTable = new JTable((TableModel) this.elTableModel);
-        this.elSorter = new TableRowSorter((TableModel) this.elTableModel);
+        this.elSorter = new TableRowSorter<>((TableModel) this.elTableModel);
         this.elScrollPn = new JScrollPane(this.laTable);
         this.tablePnl = new JPanel(new BorderLayout());
         this.refreshPnl = new JPanel(new FlowLayout(0));
@@ -76,17 +78,16 @@ public class TableButtonsGenPnl extends JPanel {
         this.filterBox.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Filtro"));
         this.filterTxtF.addCaretListener(new CaretListener() {
             public void caretUpdate(CaretEvent e) {
-                if (TableButtonsGenPnl.this.filterTxtF.getText().length() == 0) {
-                    TableButtonsGenPnl.this.elSorter.setRowFilter((RowFilter)null);
+                if (TableButtonsGenPnl.this.filterTxtF.getText().isEmpty()) {
+                    TableButtonsGenPnl.this.elSorter.setRowFilter((RowFilter) null);
                 }
-
             }
         });
         this.filterBton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 String text = TableButtonsGenPnl.this.filterTxtF.getText();
                 text.toLowerCase();
-                if (text.length() == 0) {
+                if (text.isEmpty()) {
                     TableButtonsGenPnl.this.elSorter.setRowFilter((RowFilter)null);
                 } else {
                     try {

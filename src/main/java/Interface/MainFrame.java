@@ -19,7 +19,6 @@ public class MainFrame {
     public static final int ADMIN_MODE = 0;
     public static final int USER_MODE = 1;
 
-
     public static void getMainFrame(int mode) {
         setUserComponentsReady();
         if (mode == 0) {
@@ -36,12 +35,14 @@ public class MainFrame {
         new JMenuItem("Libros por autor");
         new JMenuItem("Libros por materia");
         JMenuItem closeSesMItem = new JMenuItem("Cerrar sessión");
+
         workAreaPnl = new JPanel();
         statusLbl = new JLabel();
         statusBarPnl = new JPanel(new FlowLayout(0));
         laMenuBar = new JMenuBar();
         manageMenu = new JMenu("Gestionar");
         sessionMenu = new JMenu("Sesión");
+
         statusBarPnl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         closeSesMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
@@ -49,6 +50,7 @@ public class MainFrame {
                 MainFrame.dispose();
             }
         });
+
         prestMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 SwingUtilities.invokeLater(new Runnable() {
@@ -58,76 +60,87 @@ public class MainFrame {
                 });
             }
         });
+
         manageMenu.add(prestMItem);
         sessionMenu.add(closeSesMItem);
         laMenuBar.add(manageMenu);
-        laMenuBar.add(sessionMenu);
         statusBarPnl.add(statusLbl);
+        laMenuBar.add(sessionMenu);
+
     }
 
     public static void setAdminComponentsReady() {
-        JMenuItem subjectMItem = new JMenuItem("Materia");
-        JMenuItem userMItem = new JMenuItem("Usuarios");
-        JMenuItem booksMItem = new JMenuItem("Libros");
-        JMenuItem copyMItem = new JMenuItem("Copias");
-        JMenuItem authorMItem = new JMenuItem("Autores");
-        JMenuItem loanMItem = new JMenuItem("Préstamos");
+        JMenuItem empresaMItem = new JMenuItem("Empresas");
+        JMenuItem usuarioMItem = new JMenuItem("Usuario");
+        JMenuItem contratoMItem = new JMenuItem("Contratos");
+        JMenuItem clienteMItem = new JMenuItem("Clientes");
+        JMenuItem servicioMItem = new JMenuItem("Servicios");
+        JMenuItem eventoMItem = new JMenuItem("Eventos");
+        JMenuItem proveedorMItem = new JMenuItem("Proveedor");
+        JMenuItem empleadoMItem = new JMenuItem("Empleado");
+
         adminMenu = new JMenu("Administrar");
-        subjectMItem.addActionListener(new ActionListener() {
+        empresaMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                       // new SubjectManager(MainFrame.elFrame);
+                       // new EmpresaManager(MainFrame.elFrame);
                     }
                 });
             }
         });
-        booksMItem.addActionListener(new ActionListener() {
+        contratoMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                       // new BookManager(MainFrame.elFrame);
+                       // new ContratoManager(MainFrame.elFrame);
                     }
                 });
             }
         });
-        copyMItem.addActionListener(new ActionListener() {
+        clienteMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                      //  new CopyManager(MainFrame.elFrame);
+                      //  new ClienteManager(MainFrame.elFrame);
                     }
                 });
             }
         });
-        authorMItem.addActionListener(new ActionListener() {
+        servicioMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // new AuthorManager(MainFrame.elFrame);
+               // new ServicioManager(MainFrame.elFrame);
             }
         });
-        userMItem.addActionListener(new ActionListener() {
+        eventoMItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // new EventoManager(MainFrame.elFrame);
+            }
+        });
+
+        usuarioMItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new UserManager(MainFrame.elFrame);
             }
         });
-        loanMItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               // new LoanManager(MainFrame.elFrame);
-            }
-        });
+
+        //menu de manageBD
         manageMenu.remove(0);
-        manageMenu.add(loanMItem);
-        manageMenu.add(userMItem);
-        manageMenu.add(authorMItem);
-        manageMenu.add(copyMItem);
-        manageMenu.add(booksMItem);
-        manageMenu.add(subjectMItem);
-        adminMenu.add(userMItem);
+        manageMenu.add(empresaMItem);
+        manageMenu.add(empleadoMItem);
+        manageMenu.add(eventoMItem);
+        manageMenu.add(proveedorMItem);
+        manageMenu.add(servicioMItem);
+        manageMenu.add(clienteMItem);
+        manageMenu.add(contratoMItem);
+        //menu UserBD
+        adminMenu.add(usuarioMItem);
+
         laMenuBar.add(adminMenu);
     }
 
     public static void setFrameReady() {
-        elFrame = new JFrame("Biblioteca");
+        elFrame = new JFrame("Gestion de Empresa");
         elFrame.add(workAreaPnl, "Center");
         elFrame.add(statusBarPnl, "South");
         elFrame.setJMenuBar(laMenuBar);

@@ -55,13 +55,13 @@ public class UserManager {
                 genDiag.getGenBton().addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent actionEvent) {
                         String user_alias = UserManager.this.user_usernameTxtF.getText();
-                        String user_passw = new String(UserManager.this.user_passwPassF.getPassword());
-                        String encriptedPassw = Encription.getSha256(user_passw);
+                        String user_pass = new String(UserManager.this.user_passwPassF.getPassword());
+                        String encryptedPass = Encription.getSha256(user_pass);
                         int user_role = UserManager.this.user_roleComB.getSelectedIndex();
 
                         try {
-                            User user = new User(user_alias,encriptedPassw,user_role);
-                            BD_Locator.getUserBD().createUser(user.getCode(), user.getUsername(), user.getPassword());
+                            User user = new User(user_alias,encryptedPass,user_role);
+                            BD_Locator.getUserBD().createUser( user.getUsername(), user.getPassword(), user.getRole());
                             UserManager.this.elPanel.getTableButtonsGenPnl().refreshTable(this);
                             genDiag.getDialog().dispose();
                         } catch (SQLException | ClassNotFoundException var11) {
@@ -73,7 +73,6 @@ public class UserManager {
                             e.printStackTrace();
                             JOptionPane.showInternalMessageDialog((Component)null, "Ocurrió un error al insertar", "Error", 0);
                         }
-
                     }
                 });
                 genDiag.setResizable(false);
@@ -98,7 +97,6 @@ public class UserManager {
                         JOptionPane.showInternalMessageDialog(MainFrame.getFrame(), "Ocurrió un error al eliminar", "Error", 0);
                     }
                 }
-
             }
         });
         this.laTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -108,7 +106,6 @@ public class UserManager {
                 } else {
                     UserManager.this.elPanel.getDelButton().setEnabled(false);
                 }
-
             }
         });
     }
@@ -117,8 +114,8 @@ public class UserManager {
         this.setModifyPanelReady();
         this.user_usernameLbl = new JLabel("Nombre del usuario: ");
         this.user_usernameTxtF = new JTextField(15);
-        this.addComponent(this.user_usernameLbl, 0, 0, 1, 1);
-        this.addComponent(this.user_usernameTxtF, 0, 1, 1, 1);
+        this.addComponent(this.user_usernameLbl, 0, 0);
+        this.addComponent(this.user_usernameTxtF, 0, 1);
     }
 
     private void setModifyPanelReady() {
@@ -132,31 +129,31 @@ public class UserManager {
         this.user_usernameTxtF = new JTextField(15);
         this.user_passwPassF = new JPasswordField();
         this.user_passwCPassF = new JPasswordField();
-        this.user_roleComB = new JComboBox();
+        this.user_roleComB = new JComboBox<>();
         this.user_roleComB.addItem("0");
         this.user_roleComB.addItem("1");
         this.dataPnl.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Usuario"));
         this.laGridBgConstr.weightx = 888.0;
         this.laGridBgConstr.fill = 2;
 
-        this.addComponent(this.user_usernameLbl, 0, 0, 1, 1);
-        this.addComponent(this.user_usernameTxtF, 0, 1, 1, 1);
+        this.addComponent(this.user_usernameLbl, 0, 0);
+        this.addComponent(this.user_usernameTxtF, 0, 1);
 
-        this.addComponent(this.user_roleLbl, 1, 0, 1, 1);
-        this.addComponent(this.user_roleComB, 1, 1, 1, 1);
+        this.addComponent(this.user_roleLbl, 1, 0);
+        this.addComponent(this.user_roleComB, 1, 1);
 
-        this.addComponent(this.user_passwLbl, 2, 0, 1, 1);
-        this.addComponent(this.user_passwPassF, 2, 1, 1, 1);
+        this.addComponent(this.user_passwLbl, 2, 0);
+        this.addComponent(this.user_passwPassF, 2, 1);
 
-        this.addComponent(this.user_passwCLbl, 3, 0, 1, 1);
-        this.addComponent(this.user_passwCPassF, 3, 1, 1, 1);
+        this.addComponent(this.user_passwCLbl, 3, 0);
+        this.addComponent(this.user_passwCPassF, 3, 1);
     }
 
-    private void addComponent(Component component, int row, int column, int width, int height) {
+    private void addComponent(Component component, int row, int column) {
         this.laGridBgConstr.gridx = column;
         this.laGridBgConstr.gridy = row;
-        this.laGridBgConstr.gridwidth = width;
-        this.laGridBgConstr.gridheight = height;
+        this.laGridBgConstr.gridwidth = 1;
+        this.laGridBgConstr.gridheight = 1;
         this.elGridBgLayO.setConstraints(component, this.laGridBgConstr);
         this.dataPnl.add(component);
     }

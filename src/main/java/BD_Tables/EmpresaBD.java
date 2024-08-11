@@ -61,7 +61,7 @@ public class EmpresaBD {
         ResultSet result = null;
 
         Connection connection = BD_Locator.getConnection();
-        String stat = "";
+        String stat = "{ call public.select_all_empresas() }";
         CallableStatement callStat = connection.prepareCall(stat,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
         connection.setAutoCommit(false);
